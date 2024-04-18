@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <style>
+      @font-face{
+        font-family: monogram;
+        src: url(monogram.ttf);
+      }
+
+      body {
+        font-family: monogram, monospace;
+        font-size: 2rem; 
+        /*rem is the font-size of the current browser, Rem (short for “root-em”) 
+        units dictate an element's font size relative to the size of the root element*/
+        overflow: hidden; /* no scrollbar and no outside view of the unclipped region */
+      }
+
+      #app {
+        width: 100%;
+        height: 100%;
+        position: relative; 
+        /*Setting the top, right, bottom, and left properties of a relatively-positioned element 
+        will cause it to be adjusted away from its normal position.*/
+      }
+
+      #textbox {
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        bottom: 2vh;
+        min-height: 10vh; 
+        /* this is the abbreviation of viewheight (%) which is related to the viewport 
+        while the vmin is the short-form of min(viewheight, viewwidth) (%)*/
+        background: white;
+        border-radius: 3px;
+        /* this is to round the border and the radius*/
+        outline-style: solid; /* the style of the border */
+        padding: 1rem; /* root element and margin -> border -> padding -> element */
+        
+        display: flex; 
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /* 
+        flex-direction deside the direction of the content either row or column
+        flex-wrap deside whether to wrap the content when needed
+        justify-content deside how we align the objects horizontally
+        align-items deside how we align the objects vertically
+        flex-grow deside how much space (1/4) to take
+        */
+        word-spacing: 0.2rem; /* the spacing between each word */
+        filter: drop-shadow(0 0 0.75rem rgb(112,112,112));
+        /* applies the graphic effect */
+      }
+
+      .ui-text {
+        margin: 0;
+        user-select: none; /* avoid user select text with the cursor */
+      }
+
+      .ui-close-btn {
+        font-family: monogram, monospace;
+        font-size: inherit; 
+        /*although the adscentdent is already set the font-family, 
+        the button is an independent part */
+        border-style: none; /* which means no border */
+        border-radius: 3px; 
+        padding: 1rem;
+      }
+
+    </style>
+    <div id="app">
+      <div id="ui">
+        <p class="note">Tap/Click around to move</p>
+        <div id="textbox-container" style="display:none">
+          <div id="textbox">
+            <p id="dialogue" class="ui-text"></p>
+            <div class="btn-container">
+              <button id="close" class="ui-close-btn">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <canvas id="game"></canvas>
+    </div>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
